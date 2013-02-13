@@ -1,5 +1,7 @@
 module.exports = function( grunt ) {
   'use strict';
+  // Jade support after http://stackoverflow.com/q/14243245/396967
+  grunt.loadNpmTasks('grunt-jade');
   //
   // Grunt configuration:
   //
@@ -39,6 +41,17 @@ module.exports = function( grunt ) {
       }
     },
 
+    // compile .jade view to .html
+    jade: {
+      html: {
+        src: ['app/views/*.jade'],
+        dest: 'app/views',
+        options: {
+          client: false
+        }
+      }
+    },
+
     // generate application cache manifest
     manifest:{
       dest: ''
@@ -55,6 +68,10 @@ module.exports = function( grunt ) {
           'app/styles/**/*.{scss,sass}'
         ],
         tasks: 'compass reload'
+      },
+      jade: {
+        files: 'app/views/*.jade',
+        tasks: 'jade reload'
       },
       reload: {
         files: [
@@ -174,4 +191,6 @@ module.exports = function( grunt ) {
       done(err);
     });
   });
+  grunt.renameTask('server', 'original-server');
+  grunt.registerTask('server', 'jade original-server');
 };
