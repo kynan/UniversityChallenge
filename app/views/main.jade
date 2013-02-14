@@ -1,9 +1,8 @@
 html
   body
     .hero-unit
-      h1 Cheerio!
-      p You now have
-      ul
-        li(ng-repeat='thing in awesomeThings') {{thing}}
-      p installed.
-      h3 Enjoy coding! - Yeoman
+      h1 Southside University Challenge
+      div(ng-repeat='team in [team1, team2]')
+        h2 {{team.name}}
+        ul
+          li(ng-repeat='player in team.players') {{player}}
