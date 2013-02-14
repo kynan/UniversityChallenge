@@ -1,8 +1,4 @@
-html
-  body
-    .hero-unit
-      h1 Southside University Challenge
-      div(ng-repeat='team in [team1, team2]')
-        h2 {{team.name}}
-        ul
-          li(ng-repeat='player in team.players') {{player}}
+extends layout
+
+block content
+  h1 Welcome to Southside University Challenge

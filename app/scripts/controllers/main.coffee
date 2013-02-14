@@ -1,22 +1,26 @@
 'use strict'
 
 angular.module('UniversityChallengeApp')
-  .controller 'MainCtrl', ($scope) ->
-    $scope.team1 =
-      name: 'Team 1'
-      players:
-        [
-          'Player 1',
-          'Player 2',
-          'Player 3',
-          'Player 4'
-        ]
-    $scope.team2 =
-      name: 'Team 2'
-      players:
-        [
-          'Player 1',
-          'Player 2',
-          'Player 3',
-          'Player 4'
-        ]
+  .controller 'TeamListCtrl', ($scope, Team) ->
+    $scope.teams = Team.query()
+
+  .controller 'TeamCreateCtrl', ($scope, $location, Team) ->
+    $scope.save = () ->
+      Team.save $scope.team, (team) ->
+        $location.path '/teams'
+
+  .controller 'TeamEditCtrl', ($scope, $location, $routeParams, Team) ->
+    Team.get {id: $routeParams.id}, (team) =>
+      @original = team
+      $scope.team = new Team @original
+
+    $scope.isClean = () =>
+      angular.equals @original, $scope.team
+
+    $scope.destroy = () =>
+      @original.destroy () ->
+        $location.path '/teams'
+
+    $scope.save = () ->
+      $scope.team.update () ->
+        $location.path '/teams'

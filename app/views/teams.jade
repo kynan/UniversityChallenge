@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .well(ng-repeat='team in teams')
+    h3 {{team.name}}
+      a(href='#/teams/edit/{{team._id.$oid}}')
+        i.icon-pencil
+    ul
+      li {{team.player1}}
+      li {{team.player2}}
+      li {{team.player3}}
+      li {{team.player4}}
