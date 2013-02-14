@@ -1,37 +1,36 @@
 extends layout
 
 block content
-  .well
-    form.form-horizontal
-      .control-group
-        label.control-label Name
-        .controls
-          input(ng-model='team.name')
-      .control-group
-        label.control-label Player 1
-        .controls
-          input(ng-model='team.player1')
-      .control-group
-        label.control-label Player 2
-        .controls
-          input(ng-model='team.player2')
-      .control-group
-        label.control-label Player 3
-        .controls
-          input(ng-model='team.player3')
-      .control-group
-        label.control-label Player 4
-        .controls
-          input(ng-model='team.player4')
-      .control-group
-        .controls
-          .btn-group
-            button.btn.btn-success(ng-click='save()')
-              i.icon-ok.icon-white
-              | Save
-            button.btn.btn-danger(ng-click='destroy()', ng-show='team._id')
-              i.icon-trash.icon-white
-              | Delete
-            a.btn.btn-primary(href='#/teams')
-              i.icon-remove.icon-white
-              | Cancel
+  form.form-horizontal
+    .control-group
+      label.control-label Name
+      .controls
+        input(ng-model='team.name')
+    .control-group
+      label.control-label Player 1
+      .controls
+        input(ng-model='team.player1')
+    .control-group
+      label.control-label Player 2
+      .controls
+        input(ng-model='team.player2')
+    .control-group
+      label.control-label Player 3
+      .controls
+        input(ng-model='team.player3')
+    .control-group
+      label.control-label Player 4
+      .controls
+        input(ng-model='team.player4')
+    .control-group
+      .controls
+        .btn-group
+          button.btn.btn-success(ng-click='save()')
+            i.icon-ok.icon-white
+            | Save
+          button.btn.btn-danger(ng-click='destroy()', ng-show='team._id')
+            i.icon-trash.icon-white
+            | Delete
+          a.btn.btn-primary(href='#/teams')
+            i.icon-remove.icon-white
+            | Cancel
