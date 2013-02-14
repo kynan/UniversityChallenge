@@ -16,3 +16,6 @@ angular.module('mongolab', ['ngResource'])
       Team.remove id: @_id.$oid, cb
 
     return Team
+  .factory 'Game', ($resource) =>
+    Game = $resource 'https://api.mongolab.com/api/1/databases/uni-challenge/collections/games/:id'
+    , {apiKey: 'h18zCyIluqeZTTcASk1tJBv-zOfNGgFi'}

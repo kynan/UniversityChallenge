@@ -24,3 +24,17 @@ angular.module('UniversityChallengeApp')
     $scope.save = () ->
       $scope.team.update () ->
         $location.path '/teams'
+
+  .controller 'GameCreateCtrl', ($scope, $location, Team, Game) ->
+    $scope.teams = Team.query()
+    $scope.save = () ->
+      Game.save $scope.game, (game) ->
+        $location.path "/games/play/#{game._id.$oid}"
+
+  .controller 'GamePlayCtrl', ($scope, $location, $routeParams, Team, Game) ->
+    Game.get {id: $routeParams.id}, (game) ->
+      $scope.game = game
+      Team.get {id: $scope.game.team1}, (team) ->
+        $scope.team1 = team
+      Team.get {id: $scope.game.team2}, (team) ->
+        $scope.team2 = team

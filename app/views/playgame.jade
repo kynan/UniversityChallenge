@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .row
+    .span4
+      .well
+        h3 {{team1.name}}
+        ul
+          li {{team1.player1}}
+          li {{team1.player2}}
+          li {{team1.player3}}
+          li {{team1.player4}}
+    .span4
+      h1 Game on!
+    .span4
+      .well
+        h3 {{team2.name}}
+        ul
+          li {{team2.player1}}
+          li {{team2.player2}}
+          li {{team2.player3}}
+          li {{team2.player4}}
