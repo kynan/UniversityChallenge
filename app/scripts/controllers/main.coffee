@@ -68,3 +68,20 @@ angular.module('UniversityChallengeApp')
     $scope.pauseTimer = () ->
       $timeout.cancel(timeout_promise)
       $scope.countdown = 0
+
+    keydownListener = (e) ->
+      $scope.unlisten()
+      buzzed e.which - 48
+    $scope.listen = () ->
+      $scope.listening = 1
+      addEventListener "keypress", keydownListener
+    $scope.unlisten = () ->
+      $scope.listening = undefined
+      removeEventListener "keypress", keydownListener
+    buzzed = (n) ->
+      team = if n <= 4 then $scope.team1 else $scope.team2
+      n -= 4 if n > 5
+      $scope.$apply () ->
+        $scope.buzzedFirst = team["player#{n}"]
+    $scope.clearBuzzed = () ->
+      $scope.buzzedFirst = undefined

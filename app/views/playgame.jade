@@ -1,6 +1,15 @@
 extends layout
 
 block nav
+  .btn-group(ng-show='countdown && !listening')
+    button.btn.btn-primary(ng-click='listen()')
+      i.icon-screenshot.icon-white
+  .btn-group(ng-show='countdown && listening')
+    button.btn.btn-primary(ng-click='unlisten()')
+      i.icon-ban-circle.icon-white
+  .btn-group(ng-show='countdown && buzzedFirst')
+    button.btn.btn-primary(ng-click='clearBuzzed()')
+      i.icon-repeat.icon-white
   .btn-group(ng-show='!countdown')
     button.btn.btn-success(ng-click='startTimer()')
       i.icon-play.icon-white
@@ -22,7 +31,9 @@ block content
           li {{team1.player3}}
           li {{team1.player4}}
     .span4
-      h1.text-center {{timeout|minutes}}
+      .hero-unit
+        h1.text-center {{timeout|minutes}}
+        h2.text-center(ng-show='buzzedFirst') {{buzzedFirst}} buzzed first!
     .span4
       .well
         h3 {{team2.name}}
