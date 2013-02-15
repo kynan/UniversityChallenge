@@ -5,7 +5,7 @@ angular.module('UniversityChallengeApp')
     (time) ->
       min = Math.floor time / 60
       sec = time - min * 60
-      "#{min}:#{sec}"
+      if sec > 9 then "#{min}:#{sec}" else "#{min}:0#{sec}"
   .controller 'TeamListCtrl', ($scope, Team) ->
     $scope.teams = Team.query()
 
