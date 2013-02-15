@@ -1,21 +1,22 @@
 extends layout
 
 block content
-  form.form-horizontal
-    .control-group
-      label.control-label Team 1
-      .controls
-        select(ng-model='game.team1', ng-options='team._id.$oid as team.name for team in teams')
-    .control-group
-      label.control-label Team 2
-      .controls
-        select(ng-model='game.team2', ng-options='team._id.$oid as team.name for team in teams')
-    .control-group
-      label.control-label Time
-      .controls
-        input(ng-model='game.timeout')
-    .control-group
-      .controls
-        button.btn.btn-success(ng-click='save()')
-          i.icon-ok.icon-white
-          | Start Game
+  .well
+    form.form-horizontal
+      .control-group
+        label.control-label Team 1
+        .controls
+          select(ng-model='game.team1', ng-options='team._id.$oid as team.name for team in teams')
+      .control-group
+        label.control-label Team 2
+        .controls
+          select(ng-model='game.team2', ng-options='team._id.$oid as team.name for team in teams')
+      .control-group
+        label.control-label Time
+        .controls
+          input(ng-model='game.timeout')
+      .control-group
+        .controls
+          button.btn.btn-success(ng-click='save()')
+            i.icon-ok.icon-white
+            | Start Game
