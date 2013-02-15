@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
     coffee: {
       compile: {
         files: {
-          'app/scripts/*.js': 'app/scripts/**/*.coffee',
+          'app/scripts/*.js': 'src/scripts/**/*.coffee',
           'test/spec/*.js': 'test/spec/**/*.coffee'
         }
       }
@@ -33,7 +33,7 @@ module.exports = function( grunt ) {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
           css_dir: 'temp/styles',
-          sass_dir: 'app/styles',
+          sass_dir: 'src/styles',
           images_dir: 'app/images',
           javascripts_dir: 'temp/scripts',
           force: true
@@ -44,7 +44,7 @@ module.exports = function( grunt ) {
     // compile .jade view to .html
     jade: {
       html: {
-        src: ['app/views/*.jade'],
+        src: ['src/views/**/*.jade'],
         dest: 'app/views',
         options: {
           client: false
@@ -60,17 +60,17 @@ module.exports = function( grunt ) {
     // default watch configuration
     watch: {
       coffee: {
-        files: 'app/scripts/**/*.coffee',
+        files: 'src/scripts/**/*.coffee',
         tasks: 'coffee reload'
       },
       compass: {
         files: [
-          'app/styles/**/*.{scss,sass}'
+          'src/styles/**/*.{scss,sass}'
         ],
         tasks: 'compass reload'
       },
       jade: {
-        files: 'app/views/*.jade',
+        files: 'src/views/**/*.jade',
         tasks: 'jade reload'
       },
       reload: {
