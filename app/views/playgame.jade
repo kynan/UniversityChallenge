@@ -1,5 +1,16 @@
 extends layout
 
+block nav
+  .btn-group(ng-show='!countdown')
+    button.btn.btn-success(ng-click='startTimer()')
+      i.icon-play.icon-white
+    button.btn.btn-danger(ng-click='resetTimer()')
+      i.icon-stop.icon-white
+  .btn-group(ng-show='countdown')
+    button.btn.btn-success(ng-click='pauseTimer()')
+      i.icon-pause.icon-white
+    button.btn.btn-danger(ng-click='resetTimer()')
+      i.icon-stop.icon-white
 block content
   .row
     .span4
@@ -11,7 +22,7 @@ block content
           li {{team1.player3}}
           li {{team1.player4}}
     .span4
-      h1 Game on!
+      h1.text-center {{timeout|minutes}}
     .span4
       .well
         h3 {{team2.name}}

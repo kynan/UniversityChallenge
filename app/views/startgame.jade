@@ -11,6 +11,10 @@ block content
       .controls
         select(ng-model='game.team2', ng-options='team._id.$oid as team.name for team in teams')
     .control-group
+      label.control-label Time
+      .controls
+        input(ng-model='game.timeout')
+    .control-group
       .controls
         button.btn.btn-success(ng-click='save()')
           i.icon-ok.icon-white
