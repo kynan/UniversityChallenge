@@ -34,13 +34,13 @@ angular.module('UniversityChallengeApp')
     $scope.teams = Team.query()
     $scope.game =
       timeout: 10
+      score1: 0
+      score2: 0
     $scope.save = () ->
       Game.save $scope.game, (game) ->
         $location.path "/games/play/#{game._id.$oid}"
 
   .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, Team, Game) ->
-    $scope.countdown = 0
-    timeout_promise = undefined
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
       $scope.timeout = game.timeout*60
@@ -49,8 +49,8 @@ angular.module('UniversityChallengeApp')
       Team.get {id: $scope.game.team2}, (team) ->
         $scope.team2 = team
 
-    countDown = () ->
-      $scope.timeout--
+    $scope.countdown = 0
+    timeout_promise = undefined
     heartbeat = () ->
       $scope.timeout--
       if $scope.countdown && $scope.timeout > 0

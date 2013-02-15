@@ -24,6 +24,11 @@ block content
   .row
     .span4
       .well
+        h1.text-center {{game.score1}}
+        .text-center(ng-show='countdown')
+          a.badge.badge-success(ng-click='game.score1 = game.score1 + 10') +10
+          a.badge.badge-success(ng-click='game.score1 = game.score1 + 5') +5
+          a.badge.badge-important(ng-click='game.score1 = game.score1 - 5') -5
         h3 {{team1.name}}
         ul
           li {{team1.player1}}
@@ -36,6 +41,11 @@ block content
         h2.text-center(ng-show='buzzedFirst') {{buzzedFirst}} buzzed first!
     .span4
       .well
+        h1.text-center {{game.score2}}
+        .text-center(ng-show='countdown')
+          a.badge.badge-success(ng-click='game.score2 = game.score2 + 10') +10
+          a.badge.badge-success(ng-click='game.score2 = game.score2 + 5') +5
+          a.badge.badge-important(ng-click='game.score2 = game.score2 - 5') -5
         h3 {{team2.name}}
         ul
           li {{team2.player1}}
