@@ -36,6 +36,9 @@ angular.module('UniversityChallengeApp')
     $scope.loadTeam = (id) ->
       Team.get {id: id}, (team) ->
         return team
+    $scope.destroy = (game) ->
+      game.destroy () ->
+        $scope.games.splice $scope.games.indexOf(game), 1
 
   .controller 'GameCreateCtrl', ($scope, $location, Team, Game) ->
     $scope.teams = Team.query()

@@ -13,6 +13,9 @@ block content
     .span2
       h4.text-center {{game.timeout}} minute game
       h1.text-center {{game.score1}}:{{game.score2}}
+      .pagination-centered
+        button.btn.btn-danger(ng-click='destroy(game)', title='Delete this game')
+          i.icon-trash.icon-white
     .span5(ng-init='team2 = loadTeam(game.team2)', ng-show='team2.name')
       .well.well-small
         h3 {{team2.name}}
