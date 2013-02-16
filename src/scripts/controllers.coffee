@@ -6,6 +6,7 @@ angular.module('UniversityChallengeApp')
       min = Math.floor time / 60
       sec = time - min * 60
       if sec > 9 then "#{min}:#{sec}" else "#{min}:0#{sec}"
+
   .controller 'TeamListCtrl', ($scope, Team) ->
     $scope.teams = Team.query()
 
@@ -29,6 +30,12 @@ angular.module('UniversityChallengeApp')
     $scope.save = () ->
       $scope.team.update () ->
         $location.path '/teams'
+
+  .controller 'GameListCtrl', ($scope, Team, Game) ->
+    $scope.games = Game.query()
+    $scope.loadTeam = (id) ->
+      Team.get {id: id}, (team) ->
+        return team
 
   .controller 'GameCreateCtrl', ($scope, $location, Team, Game) ->
     $scope.teams = Team.query()
@@ -80,7 +87,7 @@ angular.module('UniversityChallengeApp')
       removeEventListener "keypress", keydownListener
     buzzed = (n) ->
       team = if n <= 4 then $scope.team1 else $scope.team2
-      n -= 4 if n > 5
+      n = n - 4 if n > 4
       $scope.$apply () ->
         $scope.buzzedFirst = team["player#{n}"]
     $scope.clearBuzzed = () ->

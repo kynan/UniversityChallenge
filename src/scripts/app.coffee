@@ -14,6 +14,9 @@ angular.module('UniversityChallengeApp', ['mongolab'])
       .when '/teams/edit/:id',
         templateUrl: 'views/edit.html'
         controller: 'TeamEditCtrl'
+      .when '/games',
+        templateUrl: 'views/games.html'
+        controller: 'GameListCtrl'
       .when '/games/new',
         templateUrl: 'views/startgame.html'
         controller: 'GameCreateCtrl'
