@@ -5,16 +5,17 @@ block content
     .span5(ng-init='team1 = loadTeam(game.team1)', ng-show='team1.name')
       .well.well-small
         h3 {{team1.name}}
-        h3 {{game.score1}}
         ul
           li {{team1.player1}}
           li {{team1.player2}}
           li {{team1.player3}}
           li {{team1.player4}}
+    .span2
+      h4.text-center {{game.timeout}} minute game
+      h1.text-center {{game.score1}}:{{game.score2}}
     .span5(ng-init='team2 = loadTeam(game.team2)', ng-show='team2.name')
       .well.well-small
         h3 {{team2.name}}
-        h3 {{game.score2}}
         ul
           li {{team2.player1}}
           li {{team2.player2}}
