@@ -41,13 +41,14 @@ angular.module('UniversityChallengeApp')
       score1: 0
       score2: 0
     $scope.save = () ->
+      $scope.game.timeout *= 60*1000
       Game.save $scope.game, (game) ->
         $location.path "/games/play/#{game._id.$oid}"
 
   .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, Team, Game) ->
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
-      $scope.timeout = game.timeout*60
+      $scope.timeout = game.timeout
       Team.get {id: $scope.game.team1}, (team) ->
         $scope.team1 = team
       Team.get {id: $scope.game.team2}, (team) ->
@@ -56,7 +57,7 @@ angular.module('UniversityChallengeApp')
     $scope.countdown = 0
     timeout_promise = undefined
     heartbeat = () ->
-      $scope.timeout--
+      $scope.timeout -= 1000
       if $scope.countdown && $scope.timeout > 0
         timeout_promise = $timeout heartbeat, 1000
       else if $scope.timeout == 0
@@ -68,7 +69,7 @@ angular.module('UniversityChallengeApp')
     $scope.resetTimer = () ->
       $timeout.cancel(timeout_promise)
       $scope.countdown = 0
-      $scope.timeout = $scope.game.timeout*60
+      $scope.timeout = $scope.game.timeout
     $scope.pauseTimer = () ->
       $timeout.cancel(timeout_promise)
       $scope.countdown = 0

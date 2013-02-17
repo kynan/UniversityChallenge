@@ -37,7 +37,7 @@ block content
           li {{team1.player4}}
     .span4
       .hero-unit
-        h1.text-center {{timeout|minutes}}
+        h1.text-center {{timeout|date:'mm:ss'}}
         h2.text-center(ng-show='buzzedFirst') {{buzzedFirst}} buzzed first!
     .span4
       .well

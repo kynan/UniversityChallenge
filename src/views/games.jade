@@ -11,7 +11,7 @@ block content
           li {{team1.player3}}
           li {{team1.player4}}
     .span2
-      h4.text-center {{game.timeout}} minute game
+      h4.text-center {{game.timeout|date:'mm:ss'}} minute game
       h1.text-center {{game.score1}}:{{game.score2}}
       .pagination-centered
         button.btn.btn-danger(ng-click='destroy(game)', title='Delete this game')
