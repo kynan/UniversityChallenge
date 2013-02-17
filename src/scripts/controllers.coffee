@@ -28,7 +28,7 @@ angular.module('UniversityChallengeApp')
   .controller 'GameListCtrl', ($scope, Team, Game) ->
     $scope.games = Game.query()
     $scope.loadTeam = (id) ->
-      Team.get {id: id}, (team) ->
+      Team.get {id: id.$oid}, (team) ->
         return team
     $scope.destroy = (game) ->
       game.destroy () ->
@@ -40,18 +40,18 @@ angular.module('UniversityChallengeApp')
       timeout: 10
       score1: 0
       score2: 0
-    $scope.save = () ->
-      $scope.game.timeout *= 60*1000
-      Game.save $scope.game, (game) ->
-        $location.path "/games/play/#{game._id.$oid}"
+    $scope.save = (game) ->
+      game.timeout *= 60*1000
+      Game.save JSON.stringify(game), (new_game) ->
+        $location.path "/games/play/#{new_game._id.$oid}"
 
   .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, Team, Game) ->
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
       $scope.timeout = game.timeout
-      Team.get {id: $scope.game.team1}, (team) ->
+      Team.get {id: $scope.game.team1.$oid}, (team) ->
         $scope.team1 = team
-      Team.get {id: $scope.game.team2}, (team) ->
+      Team.get {id: $scope.game.team2.$oid}, (team) ->
         $scope.team2 = team
 
     $scope.countdown = 0
