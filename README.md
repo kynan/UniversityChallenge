@@ -14,5 +14,6 @@ controlling the game and with two sets of four physical buzzers.
 * Connect the buzzers to the game master's laptop via USB
 * Map the buzzers for team 1 to the keys 1 to 4 and for team 2 to 5 to 8
 * If your buzzers are recognized as a USB joystick, you can use keymapping
-  tools like [QJoyPad](http://qjoypad.sourceforge.net) on Linux or
-  [Xpadder](http://xpadder.com) on Windows
+  tools like [AntiMicro](http://ryochan7.com/projects/antimicro/) on Linux (I
+  couldn't get [QJoyPad](http://qjoypad.sourceforge.net) to map keys of two
+  sets of buzzers simultaneously) or [Xpadder](http://xpadder.com) on Windows
