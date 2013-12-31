@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title {{team._id && 'Edit' || 'Create'}} a team
+    .panel-body
+      form.form-horizontal(role='form')
+        .form-group
+          label.col-sm-2.control-label Name
+          .col-sm-10
+            input.form-control(ng-model='team.name')
+        .form-group
+          label.col-sm-2.control-label Player 1
+          .col-sm-10
+            input.form-control(ng-model='team.player1')
+        .form-group
+          label.col-sm-2.control-label Player 2
+          .col-sm-10
+            input.form-control(ng-model='team.player2')
+        .form-group
+          label.col-sm-2.control-label Player 3
+          .col-sm-10
+            input.form-control(ng-model='team.player3')
+        .form-group
+          label.col-sm-2.control-label Player 4
+          .col-sm-10
+            input.form-control(ng-model='team.player4')
+        .form-group
+          .col-sm-offset-2.col-sm-10.btn-group
+            button.btn.btn-success(ng-click='save()')
+              span.glyphicon.glyphicon-ok
+              | Save
+            button.btn.btn-danger(ng-click='destroy()', ng-show='team._id')
+              i.glyphicon.glyphicon-trash
+              | Delete
+            button.btn.btn-primary(href='#/teams')
+              i.glyphicon.glyphicon-remove
+              | Cancel

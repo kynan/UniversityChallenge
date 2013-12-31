@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Start a new game
+    .panel-body
+      form.form-horizontal(role='form')
+        .form-group
+          label.col-sm-2.control-label Team 1
+          .col-sm-10
+            select.form-control(ng-model='game.team1', ng-options='team._id as team.name for team in teams')
+        .form-group
+          label.col-sm-2.control-label Team 2
+          .col-sm-10
+            select.form-control(ng-model='game.team2', ng-options='team._id as team.name for team in teams')
+        .form-group
+          label.col-sm-2.control-label Time
+          .col-sm-10
+            input.form-control(ng-model='game.timeout')
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            button.btn.btn-success(ng-click='save(game)')
+              i.glyphicon.glyphicon-ok
+              | Start Game

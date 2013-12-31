@@ -1,0 +1,72 @@
+extends layout
+
+block nav
+  .btn-group(ng-show='countdown && !listening')
+    button.btn.btn-primary(ng-click='listen()')
+      span.glyphicon.glyphicon-screenshot
+  .btn-group(ng-show='countdown && listening')
+    button.btn.btn-primary(ng-click='unlisten()')
+      span.glyphicon.glyphicon-ban-circle
+  .btn-group(ng-show='countdown && buzzedFirst')
+    button.btn.btn-primary(ng-click='clearBuzzed()')
+      span.glyphicon.glyphicon-repeat
+  .btn-group(ng-show='!countdown')
+    button.btn.btn-success(ng-click='startTimer()')
+      span.glyphicon.glyphicon-play
+    button.btn.btn-danger(ng-click='resetTimer()')
+      span.glyphicon.glyphicon-stop
+  .btn-group(ng-show='countdown')
+    button.btn.btn-success(ng-click='pauseTimer()')
+      span.glyphicon.glyphicon-pause
+    button.btn.btn-danger(ng-click='resetTimer()')
+      span.glyphicon.glyphicon-stop
+block content
+  .row
+    .col-sm-4
+      .panel.panel-default
+        .panel-heading
+          h1.text-center {{game.score1}}
+          .text-center(ng-show='countdown')
+            a.badge.badge-success(ng-click='game.score1 = game.score1 + 10') +10
+            a.badge.badge-success(ng-click='game.score1 = game.score1 + 5') +5
+            a.badge.badge-important(ng-click='game.score1 = game.score1 - 5') -5
+          h3.panel-title {{team1.name}}
+        table.table.table-striped
+          tr
+            td 1
+            td {{team1.player1}}
+          tr
+            td 2
+            td {{team1.player2}}
+          tr
+            td 3
+            td {{team1.player3}}
+          tr
+            td 4
+            td {{team1.player4}}
+    .col-sm-4
+      .hero-unit
+        h1.text-center {{timeout|date:'mm:ss'}}
+        h2.text-center(ng-show='buzzedFirst') {{buzzedFirst}} buzzed first!
+    .col-sm-4
+      .panel.panel-default
+        .panel-heading
+          h1.text-center {{game.score2}}
+          .text-center(ng-show='countdown')
+            a.badge.badge-success(ng-click='game.score2 = game.score2 + 10') +10
+            a.badge.badge-success(ng-click='game.score2 = game.score2 + 5') +5
+            a.badge.badge-important(ng-click='game.score2 = game.score2 - 5') -5
+          h3.panel-title {{team2.name}}
+        table.table.table-striped
+          tr
+            td 1
+            td {{team2.player1}}
+          tr
+            td 2
+            td {{team2.player2}}
+          tr
+            td 3
+            td {{team2.player3}}
+          tr
+            td 4
+            td {{team2.player4}}

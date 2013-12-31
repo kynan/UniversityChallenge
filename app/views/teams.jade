@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .col-sm-4.col-lg-3(ng-repeat='team in teams')
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title {{team.name}}
+          a.pull-right(href='#/teams/edit/{{team._id.$oid}}')
+            span.glyphicon.glyphicon-pencil
+      table.table.table-striped
+        tr
+          td 1
+          td {{team.player1}}
+        tr
+          td 2
+          td {{team.player2}}
+        tr
+          td 3
+          td {{team.player3}}
+        tr
+          td 4
+          td {{team.player4}}

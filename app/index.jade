@@ -1,25 +1,26 @@
 !!! 5
 //if lt IE 7
-  html.no-js.lt-ie9.lt-ie8.lt-ie7  
+  html.no-js.lt-ie9.lt-ie8.lt-ie7
 //if IE 7
-  html.no-js.lt-ie9.lt-ie8  
+  html.no-js.lt-ie9.lt-ie8
 //if IE 8
-  html.no-js.lt-ie9  
+  html.no-js.lt-ie9
 // [if gt IE 8] <!
 html.no-js
   // <![endif]
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title
+    title Southside University Challenge
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
     // Place favicon.ico and apple-touch-icon.png in the root directory
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css')
     // build:css({.tmp,app}) styles/main.css
     link(rel='stylesheet', href='styles/main.css')
     // endbuild
-  body(ng-app='uniChallengeApp')
+  body
     //if lt IE 7
       p.browsehappy
         | You are using an
@@ -31,13 +32,14 @@ html.no-js
       script(src='bower_components/es5-shim/es5-shim.js')
       script(src='bower_components/json3/lib/json3.min.js')
     // Add your site or application content here
-    .container(ng-view='')
+    div(ng-app='UniversityChallengeApp', ng-view='ng-view')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js')
     // build:js({.tmp,app}) scripts/scripts.js
     script(src='scripts/app.js')
-    script(src='scripts/controllers/main.js')
+    script(src='scripts/services.js')
+    script(src='scripts/controllers.js')
     // endbuild
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script
