@@ -25,6 +25,22 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    // Compile jade to html
+    jade: {
+      dist: {
+        options: {
+          pretty: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '.tmp',
+          src: ['{,*/}*.jade', 'views/{,*/}*.jade'],
+          ext: '.html'
+        }]
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       coffee: {
@@ -42,12 +58,16 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      jade: {
+        files: ['<%= yeoman.app %>/*.jade', '<%= yeoman.app %>/views/**/{,*/}*.jade'],
+        tasks: ['jade:dist']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '{.tmp,<%= yeoman.app %>}/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -176,7 +196,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '.tmp/index.html',
       options: {
         dest: '<%= yeoman.dist %>'
       }
@@ -289,6 +309,7 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
+        'jade:dist',
         'copy:styles'
       ],
       test: [
