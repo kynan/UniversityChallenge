@@ -35,7 +35,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           dest: '.tmp',
-          src: ['{,*/}*.jade', 'views/{,*/}*.jade'],
+          src: ['{,*/}*.jade'],
           ext: '.html'
         }]
       }
@@ -59,16 +59,17 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       jade: {
-        files: ['<%= yeoman.app %>/*.jade', '<%= yeoman.app %>/views/**/{,*/}*.jade'],
-        tasks: ['jade:dist']
+        files: ['<%= yeoman.app %>/{,*/}*.jade'],
+        tasks: ['jade']
       },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '{.tmp,<%= yeoman.app %>}/{,*/}*.html',
+          '{<%= yeoman.app %>,.tmp}/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -247,7 +248,12 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['*.html', 'views/{,*/}*.html'],
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.tmp',
+          src: ['*.html', 'views/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
