@@ -1,6 +1,10 @@
 {
-  "name": "unichallenge",
-  "version": "0.0.0",
+  "name": "University Challenge",
+  "version": "0.0.1",
+  "description": "University Challenge is a web based quiz show application modelled on the popular UK television show. It manages the competing teams and takes care of buzzing and scoring, but does *not* handle the questions themselves.",
+  "license": "MIT",
+  "author": "Florian Rathgeber <florian.rathgeber@gmail.com>",
+  "homepage": "http://florianrathgeber.me/UniversityChallenge",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
