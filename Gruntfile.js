@@ -390,6 +390,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'jade:dist',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
