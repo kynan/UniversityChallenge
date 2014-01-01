@@ -46,7 +46,7 @@ angular.module('UniversityChallengeApp')
       Game.save JSON.stringify(game), (new_game) ->
         $location.path "/games/play/#{new_game._id.$oid}"
 
-  .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, Team, Game) ->
+  .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, $speechRecognition, Team, Game) ->
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
       $scope.timeout = game.timeout
@@ -89,5 +89,6 @@ angular.module('UniversityChallengeApp')
       n = n - 4 if n > 4
       $scope.$apply () ->
         $scope.buzzedFirst = team["player#{n}"]
+        $speechRecognition.speak(team.name + '! ' + team["player#{n}"] + '!')
     $scope.clearBuzzed = () ->
       $scope.buzzedFirst = undefined

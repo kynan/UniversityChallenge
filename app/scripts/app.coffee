@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('UniversityChallengeApp', ['ngRoute', 'mongolab'])
+angular.module('UniversityChallengeApp', ['ngRoute', 'mongolab', 'adaptive.speech'])
   .config ['$routeProvider', ($routeProvider) ->
     $routeProvider
       .when '/',
