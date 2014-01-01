@@ -1,0 +1,94 @@
+<div role="navigation" class="nav navbar navbar-default">
+  <div class="navbar-header"><a href="#/" class="navbar-brand">Southside University Challenge</a></div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="#/teams">Teams</a></li>
+      <li><a href="#/teams/new">New Team</a></li>
+      <li><a href="#/games">Games</a></li>
+      <li><a href="#/games/new">New Game</a></li>
+    </ul>
+    <div class="pull-right">
+      <div ng-show="countdown &amp;&amp; !listening" class="btn-group">
+        <button ng-click="listen()" class="btn btn-primary"><span class="glyphicon glyphicon-screenshot"></span></button>
+      </div>
+      <div ng-show="countdown &amp;&amp; listening" class="btn-group">
+        <button ng-click="unlisten()" class="btn btn-primary"><span class="glyphicon glyphicon-ban-circle"></span></button>
+      </div>
+      <div ng-show="countdown &amp;&amp; buzzedFirst" class="btn-group">
+        <button ng-click="clearBuzzed()" class="btn btn-primary"><span class="glyphicon glyphicon-repeat"></span></button>
+      </div>
+      <div ng-show="!countdown" class="btn-group">
+        <button ng-click="startTimer()" class="btn btn-success"><span class="glyphicon glyphicon-play"></span></button>
+        <button ng-click="resetTimer()" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
+      </div>
+      <div ng-show="countdown" class="btn-group">
+        <button ng-click="pauseTimer()" class="btn btn-success"><span class="glyphicon glyphicon-pause"></span></button>
+        <button ng-click="resetTimer()" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="text-center">{{game.score1}}</h1>
+          <div ng-show="countdown" class="text-center"><a ng-click="game.score1 = game.score1 + 10" class="badge badge-success">+10</a><a ng-click="game.score1 = game.score1 + 5" class="badge badge-success">+5</a><a ng-click="game.score1 = game.score1 - 5" class="badge badge-important">-5</a></div>
+          <h3 class="panel-title">{{team1.name}}</h3>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <td>1</td>
+            <td>{{team1.player1}}</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>{{team1.player2}}</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>{{team1.player3}}</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>{{team1.player4}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="hero-unit">
+        <h1 class="text-center">{{timeout|date:'mm:ss'}}</h1>
+        <h2 ng-show="buzzedFirst" class="text-center">{{buzzedFirst}} buzzed first!</h2>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="text-center">{{game.score2}}</h1>
+          <div ng-show="countdown" class="text-center"><a ng-click="game.score2 = game.score2 + 10" class="badge badge-success">+10</a><a ng-click="game.score2 = game.score2 + 5" class="badge badge-success">+5</a><a ng-click="game.score2 = game.score2 - 5" class="badge badge-important">-5</a></div>
+          <h3 class="panel-title">{{team2.name}}</h3>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <td>1</td>
+            <td>{{team2.player1}}</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>{{team2.player2}}</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>{{team2.player3}}</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>{{team2.player4}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
