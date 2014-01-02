@@ -13,28 +13,7 @@
 </div>
 <div class="container">
   <div ng-repeat="team in teams" class="col-sm-4 col-lg-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{team.name}}<a href="#/teams/edit/{{team._id.$oid}}" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a></h3>
-      </div>
-      <table class="table table-striped">
-        <tr>
-          <td>1</td>
-          <td>{{team.player1}}</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>{{team.player2}}</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>{{team.player3}}</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>{{team.player4}}</td>
-        </tr>
-      </table>
-    </div>
+    <team editable="true" team="team"></team>
   </div>
+  <h1 ng-hide="teams.length">No teams yet!</h1>
 </div>

@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div ng-show="score != null" class="panel-heading">
+    <h1 class="text-center">{{score}}</h1>
+    <div ng-show="countdown" class="text-center"><a ng-click="score = score + 10" class="badge badge-success">+10</a><a ng-click="score = score + 5" class="badge badge-success">+5</a><a ng-click="score = score - 5" class="badge badge-important">-5</a></div>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">{{team.name}}<a href="#/teams/edit/{{team._id.$oid}}" ng-show="editable" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a></h3>
+  </div>
+  <table class="table table-striped">
+    <tr>
+      <td>1</td>
+      <td>{{team.player1}}</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>{{team.player2}}</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>{{team.player3}}</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>{{team.player4}}</td>
+    </tr>
+  </table>
+</div>

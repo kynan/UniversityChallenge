@@ -14,29 +14,7 @@
 <div class="container">
   <div ng-repeat="game in games" class="row">
     <div ng-init="team1 = loadTeam(game.team1)" ng-show="team1.name" class="col-sm-5">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{team1.name}}<a href="#/teams/edit/{{team._id.$oid}}" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a></h3>
-        </div>
-        <table class="table table-striped">
-          <tr>
-            <td>1</td>
-            <td>{{team1.player1}}</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>{{team1.player2}}</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>{{team1.player3}}</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>{{team1.player4}}</td>
-          </tr>
-        </table>
-      </div>
+      <team team="team1"></team>
     </div>
     <div class="col-sm-2">
       <h4 class="text-center">{{game.timeout|date:'mm:ss'}} minute game</h4>
@@ -44,29 +22,8 @@
       <button ng-click="destroy(game)" title="Delete this game" class="btn btn-danger center-block"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
     <div ng-init="team2 = loadTeam(game.team2)" ng-show="team2.name" class="col-sm-5">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{team2.name}}<a href="#/teams/edit/{{team._id.$oid}}" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a></h3>
-        </div>
-        <table class="table table-striped">
-          <tr>
-            <td>1</td>
-            <td>{{team2.player1}}</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>{{team2.player2}}</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>{{team2.player3}}</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>{{team2.player4}}</td>
-          </tr>
-        </table>
-      </div>
+      <team team="team2"></team>
     </div>
   </div>
+  <h1 ng-hide="games.length">No games yet!</h1>
 </div>
