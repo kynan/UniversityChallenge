@@ -9,11 +9,11 @@ block content
         .form-group
           label.col-sm-2.control-label Team 1
           .col-sm-10
-            select.form-control(ng-model='game.team1', ng-options='team._id as team.name for team in teams')
+            select.form-control(ng-model='game.team1', ng-options='team._id.$oid as team.name for team in teams')
         .form-group
           label.col-sm-2.control-label Team 2
           .col-sm-10
-            select.form-control(ng-model='game.team2', ng-options='team._id as team.name for team in teams')
+            select.form-control(ng-model='game.team2', ng-options='team._id.$oid as team.name for team in teams')
         .form-group
           label.col-sm-2.control-label Time
           .col-sm-10

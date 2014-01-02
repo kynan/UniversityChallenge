@@ -50,9 +50,9 @@ angular.module('UniversityChallengeApp')
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
       $scope.timeout = game.timeout
-      Team.get {id: $scope.game.team1.$oid}, (team) ->
+      Team.get {id: $scope.game.team1}, (team) ->
         $scope.team1 = team
-      Team.get {id: $scope.game.team2.$oid}, (team) ->
+      Team.get {id: $scope.game.team2}, (team) ->
         $scope.team2 = team
 
     $scope.countdown = 0
@@ -62,6 +62,8 @@ angular.module('UniversityChallengeApp')
       if $scope.countdown && $scope.timeout > 0
         timeout_promise = $timeout heartbeat, 1000
       else if $scope.timeout == 0
+        $scope.game.update () ->
+          console.log 'Saved game', $scope.game
         alert "Time is up!"
 
     $scope.startTimer = () ->
