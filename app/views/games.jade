@@ -11,3 +11,4 @@ block content
         span.glyphicon.glyphicon-trash
     .col-sm-5(ng-init='team2 = loadTeam(game.team2)', ng-show='team2.name')
       team(team='team2')
+  h1(ng-hide='games.length') No games yet!

@@ -3,3 +3,4 @@ extends layout
 block content
   .col-sm-4.col-lg-3(ng-repeat='team in teams')
     team(editable='true', team='team')
+  h1(ng-hide='teams.length') No teams yet!
