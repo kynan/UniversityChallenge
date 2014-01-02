@@ -62,8 +62,6 @@ angular.module('UniversityChallengeApp')
       if $scope.countdown && $scope.timeout > 0
         timeout_promise = $timeout heartbeat, 1000
       else if $scope.timeout == 0
-        $scope.game.update () ->
-          console.log 'Saved game', $scope.game
         alert "Time is up!"
 
     $scope.startTimer = () ->
@@ -94,3 +92,6 @@ angular.module('UniversityChallengeApp')
         $speechRecognition.speak(team.name + '! ' + team["player#{n}"] + '!')
     $scope.clearBuzzed = () ->
       $scope.buzzedFirst = undefined
+
+    $scope.$watchCollection 'game', () ->
+      $scope.game.update()
