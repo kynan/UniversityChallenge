@@ -55,6 +55,22 @@ angular.module('UniversityChallengeApp')
       Team.get {id: $scope.game.team2}, (team) ->
         $scope.team2 = team
 
+    Pusher.logToConsole = true;
+
+    pusher = new Pusher('cba436e88472fa7154a2', {
+      cluster: 'eu',
+      encrypted: true
+    })
+
+    channel = pusher.subscribe('gameshow')
+    channel.bind 'button', (data) ->
+      if $scope.listening
+        $scope.unlisten()
+        team = if data.id == "1" then $scope.team1 else $scope.team2
+        $scope.$apply () ->
+          $scope.buzzedFirst = team.name
+          $speechRecognition.speak(team.name + '!')
+
     $scope.countdown = 0
     timeout_promise = undefined
     heartbeat = () ->
