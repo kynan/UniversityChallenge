@@ -46,7 +46,7 @@ angular.module('UniversityChallengeApp')
       Game.save JSON.stringify(game), (new_game) ->
         $location.path "/games/play/#{new_game._id.$oid}"
 
-  .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, $speechRecognition, Team, Game) ->
+  .controller 'GamePlayCtrl', ($scope, $location, $routeParams, $timeout, Team, Game) ->
     Game.get {id: $routeParams.id}, (game) ->
       $scope.game = game
       $scope.timeout = game.timeout
@@ -69,7 +69,7 @@ angular.module('UniversityChallengeApp')
         team = if data.id == "1" then $scope.team1 else $scope.team2
         $scope.$apply () ->
           $scope.buzzedFirst = team.name
-          $speechRecognition.speak(team.name + '!')
+          window.speechSynthesis?.speak new SpeechSynthesisUtterance team.name + '!'
 
     $scope.countdown = 0
     timeout_promise = undefined
@@ -105,7 +105,7 @@ angular.module('UniversityChallengeApp')
       n = n - 4 if n > 4
       $scope.$apply () ->
         $scope.buzzedFirst = team["player#{n}"]
-        $speechRecognition.speak(team.name + '! ' + team["player#{n}"] + '!')
+        window.speechSynthesis?.speak new SpeechSynthesisUtterance team.name + '! ' + team["player#{n}"] + '!'
     $scope.clearBuzzed = () ->
       $scope.buzzedFirst = undefined
 
